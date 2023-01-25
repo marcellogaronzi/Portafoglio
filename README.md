@@ -1,0 +1,48 @@
+# Portafoglio
+
+Python app to operate on monthly stock prices
+
+![](https://images.unsplash.com/photo-1642790551116-18e150f248e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=700&q=80)
+
+
+## Requirements
+
+- python 3.9
+- pipenv (`pip install pipenv`)
+
+
+## Installation
+
+This app is built using `pipenv`.
+
+```
+pipenv install
+```
+
+
+## Execution
+
+- Windows
+  ```
+  pipenv run python main.py
+  ```
+  
+- Linux
+  ```
+  pipenv run python3 main.py
+  ```
+  
+  
+## Contributing
+
+You're free to clone the repository and collaborate
+
+[https://github.com/marcellogaronzi/Portafoglio.git](https://github.com/marcellogaronzi/Portafoglio.git)
+
+
+## Contributors
+
+- Bonomo Giovanni
+- Garonzi Marcello
+- Mazzurana Riccardo
+- Serratore Federico
