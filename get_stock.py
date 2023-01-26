@@ -43,7 +43,7 @@ def get_stock(stock, start, end=datetime.now(), interval="1mo", success=None, er
 
 def main():
     def on_success(string):
-        with open("result.csv", "w") as csv:
+        with open("csv/result.csv", "w") as csv:
             csv.write(string)
 
     def on_error(code):
