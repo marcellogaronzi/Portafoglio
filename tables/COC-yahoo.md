@@ -1,47 +1,14 @@
 ﻿# ___COMPANY ORGANIZATION CHART___
 
-
- ```ditaa {cmd=true args=["-E"]}
-							  +-------------+								
-							  |        		|								
-							  |  President  |								
-							  |	  [Aprea]	|								
-							  |     		|								
-							  +------+------+								
-							         :										
-							         |										
-        +-----------------------------+--------------------------+			
-	    |						     |							|			
-+---------------+			  +---------------+			   +---------------+
-|        		|			  |        		  |			   |        	   |
-|     Sales 	|			  |   Production1 |			   |    Marketing  |
-|	  [Bonomo]	|			  |    [Bonomo]   |			   |        	   |
-|     			|			  |               | 		   |  [Mazzurana]  |
-+------+--------+			  +---------------+            |               |
-                                       |                    +------+--------+
-							      +---------------+							
-							      |       		  |							
-							      |  Production2  |							
-							      |	              |							
-							      |   [Garonzi]   |							
-							      +---------------+							
-                                       |                                    
-							      +---------------+							
-							      |       		  |							
-							      |  Production3  |							
-							      |	              |							
-							      |  [Mazzurana]  |							
-							      +---------------+							
-                                       |                                    
-							      +---------------+							
-							      |       		  |							
-							      |  Production4  |							
-							      |	              |							
-							      |  [Serratore]  |							
-							      +---------------+							
-```
-
-
+|Name or role|Member|
+|------------|------|
+|President|Aprea|
+|Sales|Bonomo|
+|Marketing|Mazzurana|
+|Production1|Bonomo|
+|Production2|Garonzi|
+|Production3|Mazzurana|
+|Production4|Serratore|
 
 ## Authors
 
