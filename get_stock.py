@@ -1,4 +1,5 @@
 from datetime import datetime
+from csv_to_dict import csv_to_dict
 import requests
 import asyncio
 
@@ -51,6 +52,7 @@ def main():
 
     # Download data
     get_stock("PIRC.MI", datetime(2022, 1, 1), success=on_success, error=on_error)
+    print(csv_to_dict())
 
 
 if __name__ == "__main__":
