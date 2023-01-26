@@ -7,8 +7,8 @@
 | Impostare main.py con le librerie|Done|S|R|S|S|
 | Phase 2| | | | | |
 | impostare la request a yahoo finance|Done|S|R|S|S|
-| Impostare dizionario dal csv ricevuto|Doing|R|S|S|S|
-| Convertire dizionario in .yaml|Doing|S|S|R|S|
+| Impostare dizionario dal csv ricevuto|Doing|S|S|R|S|
+| Convertire dizionario in .yaml|Doing|R|S|S|S|
 | Convertire dizionario in .json|Doing|S|S|S|R|
 
 
