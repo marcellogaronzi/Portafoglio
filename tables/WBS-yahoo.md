@@ -9,7 +9,7 @@
 | 2     | 1   | Impostare la request a yahoo finance                 | Garonzi   | 24/01/2023 | 24/01/2023 | Usare libreria requests |
 | 3     | 1 | Convertire .csv ricevuto in dizionario               | Bonomo   | 24/01/2023 | 25/01/2023 |                         |
 | 4     | 1 | Convertire dizionario in .yaml                       | Mazzurana | 24/01/2023 | 25/01/2023 | Usare libreria pyyaml   |
-| 5     | 1 | Convertire dizionario in .json                       | Serratore   | 24/01/2023 | 25/01/2023 | Usare libreria json     |
+| 1 | Convertire dizionario in .json                       | Serratore   | 24/01/2023 | 25/01/2023 | Usare libreria json     |
 
 ## Authors
 
