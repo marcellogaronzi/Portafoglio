@@ -2,7 +2,7 @@
 
 |Name or role|Member|
 |------------|------|
-|President|Aprea|
+|President|Garonzi|
 |Sales|Bonomo|
 |Marketing|Mazzurana|
 |Production1|Bonomo|
