@@ -23,7 +23,9 @@ This app is built using `pipenv`.
 ```
 pipenv install
 ```
-
+```
+pipenv shell
+```
 
 ## Execution
 
