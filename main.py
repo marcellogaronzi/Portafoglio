@@ -92,14 +92,37 @@ def etl(stock, start, end, interval, success, error):
 
 
 def main():
-    print("-------------------------------------------")
-    print("---Pirelli & C. S.p.A MOTHLY STOCK PRICES")
-    print("-------------------------------------------\n")
+    def mode_0():
+        global stock, start, end, interval
 
-    stock = "PIRC.MI"
-    start = datetime(2022, 1, 23, 7, 36, 43)
-    end = datetime(2023, 1, 23, 7, 36, 43)
-    interval = "1mo"
+        print("-------------------------------------------")
+        print("---Pirelli & C. S.p.A MOTHLY STOCK PRICES")
+        print("-------------------------------------------\n")
+
+        stock = "PIRC.MI"
+        start = datetime(2022, 1, 23, 7, 36, 43)
+        end = datetime(2023, 1, 23, 7, 36, 43)
+        interval = "1mo"
+
+    def mode_1():
+        global stock, start, end, interval
+        
+        stock = input("Stock name: ")
+        start = datetime(*map(int, input("Start date [yyyy-mm-dd]: ").strip().split("-")))
+        end = datetime(*map(int, input("End date [yyyy-mm-dd]: ").strip().split("-")))
+        interval = input("Interval [1mo, 1wk, 1d]: ")
+
+    # User choice
+    default = input("Run in default mode [y/n]? ").lower() != "n"
+    print()
+
+    # Set request params
+    if default:
+        mode_0()
+    else:
+        mode_1()
+        
+    # Run ETL (download + conversion)
     success = on_success
     error = on_error
     etl(stock, start, end, interval, success, error)
