@@ -1,6 +1,12 @@
-# ides
+# IDEs
 .vscode
 .idea
 
 # pipenv
 *.lock
+
+# __pycache__
+**/__pycache__
+
+# output files
+out
