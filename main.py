@@ -49,12 +49,12 @@ def on_success(stock_data):
     data = csv_to_dict("out/result.csv")
     print("---Dict obtained succesfully\n")
 
-    # dict to .yaml converter
+    # dict to .json converter
     print("---Convert dict to .json")
     dict_to_json(data, "out/result.json")
     print("---.json file created succesfully\n")
 
-    # dict to .json converter
+    # dict to .yaml converter
     print("---Convert dict to .yaml")
     dict_to_yaml(data, "out/result.yaml")
     print("---.yaml file created succesfully\n")
