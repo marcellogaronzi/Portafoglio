@@ -5,6 +5,7 @@ from datetime import datetime
 from scripts.get_stock import get_stock
 from scripts.csv_to_dict import csv_to_dict
 from scripts.dict_to_json import dict_to_json
+from scripts.dict_to_yaml import dict_to_yaml
 
 __author__ = ["Bonomo Giovanni", "Garonzi Marcello",
               "Mazzurana Riccardo", "Serratore Federico"]
@@ -45,15 +46,18 @@ def on_success(stock_data):
 
     # .csv to dict converter
     print("---Convert .csv file to dict")
-    csv_to_dict()
+    data = csv_to_dict("out/result.csv")
     print("---Dict obtained succesfully\n")
 
     # dict to .yaml converter
+    print("---Convert dict to .json")
+    dict_to_json(data, "out/result.json")
+    print("---.json file created succesfully\n")
 
     # dict to .json converter
-    print("---Convert dict to .json")
-    dict_to_json()
-    print("---.json file created succesfully\n")
+    print("---Convert dict to .yaml")
+    dict_to_yaml(data, "out/result.yaml")
+    print("---.yaml file created succesfully\n")
 
     print("---Conversions completed")
 
@@ -65,9 +69,9 @@ def on_error(error):
     print("---Unable to download data. HTTP returned", error)
 
 
-def download(stock, start, end, interval, success, error):
+def etl(stock, start, end, interval, success, error):
     """
-    Downloads stock data
+    Downloads stock data and generates 3 files: csv, json and yaml
 
         Parameters:
             stock (str): Stock name
@@ -98,7 +102,7 @@ def main():
     interval = "1mo"
     success = on_success
     error = on_error
-    download(stock, start, end, interval, success, error)
+    etl(stock, start, end, interval, success, error)
 
 
 if __name__ == "__main__":
