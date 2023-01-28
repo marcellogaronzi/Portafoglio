@@ -1,7 +1,5 @@
 from datetime import datetime
-from scripts.csv_to_dict import csv_to_dict
 import requests
-import asyncio
 
 EPOCH = datetime(1970, 1, 1)
 
@@ -14,9 +12,9 @@ def get_stock(stock, start, end=datetime.now(), interval="1mo", success=None, er
             stock (str): Stock name
             start (datetime): Start date of period
             stop (datetime): End date of period (default is today)
-            interval (str): Type of interval (1mo, 1da, ...)
+            interval (str): Type of interval (1mo, 1wk, 1d)
             success (lambda): Success callback
-            error (lanbda): Error callback
+            error (lambda): Error callback
     """
 
     # Stock Period
@@ -40,20 +38,3 @@ def get_stock(stock, start, end=datetime.now(), interval="1mo", success=None, er
     else:
         if error:
             error(res.status_code)
-
-
-def main():
-    def on_success(string):
-        with open("out/result.csv", "w") as csv:
-            csv.write(string)
-
-    def on_error(code):
-        print("Unable to fetch data. HTTP returned error", code)
-
-    # Download data
-    get_stock("PIRC.MI", datetime(2022, 1, 1), success=on_success, error=on_error)
-    print(csv_to_dict())
-
-
-if __name__ == "__main__":
-    main()
