@@ -23,9 +23,6 @@ This app is built using `pipenv`.
 ```
 pipenv install
 ```
-```
-pipenv shell
-```
 
 ## Execution
 
@@ -33,10 +30,20 @@ pipenv shell
   ```
   pipenv run python main.py
   ```
+  or
+  ```
+  pipenv shell
+  python main.py
+  ```
   
 - Linux
   ```
   pipenv run python3 main.py
+  ```
+  or
+  ```
+  pipenv shell
+  python3 main.py
   ```
   
   
