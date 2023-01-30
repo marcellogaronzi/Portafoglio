@@ -18,7 +18,7 @@ Python app to operate on monthly stock prices. Downloads data from [yahoo financ
 
 ## Installation
 
-This app is built using `pipenv`.
+This app is built using `pipenv`. Before running be sure to install all packages and their dependences with:
 
 ```
 pipenv install
@@ -46,10 +46,14 @@ pipenv install
   python3 main.py
   ```
   
+>
+> The program will generate 3 files in the `out/` directory, each containing stocks data downloaded from the user.
+>
+
   
 ## Contributing
 
-You're free to clone the repository and collaborate
+You're free to clone the repository and collaborate.
 
 [https://github.com/marcellogaronzi/Portafoglio.git](https://github.com/marcellogaronzi/Portafoglio.git)
 
