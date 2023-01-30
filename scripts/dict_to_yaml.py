@@ -1,5 +1,6 @@
 import yaml
 
+
 def dict_to_yaml(dictionary, filename):
     """
     Converts a dict into yaml format and saves it on a file
