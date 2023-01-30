@@ -7,7 +7,7 @@
 | 3   | 1 | Impostare [main.py](http://main.py/) con le librerie|Garonzi|24/01/2023|24/01/2023| |
 | 1   | 2 | Phase 2| | | | |
 | 2   | 1 | Impostare la request a yahoo finance|Garonzi|24/01/2023|24/01/2023|Usare libreria requests|
-| 3   | 1 | Convertire .csv ricevuto in dizionario|Mazzurana|24/01/2023|25/01/2023| |
+| 3   | 1 | Convertire .csv ricevuto in dizionario|Mazzurana|24/01/2023|25/01/2023|Usare libreria csv|
 | 4   | 1 | Convertire dizionario in .yaml|Bonomo|24/01/2023|25/01/2023|Usare libreria pyyaml|
 |5    | 1 | Convertire dizionario in .json|Serratore|24/01/2023|25/01/2023|Usare libreria json|
 
