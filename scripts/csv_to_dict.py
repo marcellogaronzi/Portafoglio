@@ -1,12 +1,13 @@
 import csv
 
+
 def csv_to_dict(filepath):
     """
     Converts a .csv file into a key/value dictionary.
-    
+
         Returns:
             data (dict): dictionary
-    """   
+    """
     data = {}
     with open(filepath) as csv_file:
         csv_reader = csv.DictReader(csv_file)
