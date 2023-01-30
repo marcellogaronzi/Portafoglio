@@ -3,13 +3,17 @@
 |Deliverable or task| STATUS | Production1| Production2 | Production3| Production4 |
 |-------------------|--------| ---------------------------------------------------- | ------ | -------------------- | ------------ |
 |Phase 1| | | | | |
-| Creare cartella e installarci pipenv|Done|S|D|S|R|
-| Impostare main.py con le librerie|Done|S|R|S|S|
+| Create WBS-OBI-RACI|Done|S|S|S|R|
+| Create workspace and configure pipenv|Done|S|D|R|S|
+| Set up main.py|Done|S|R|S|S|
 | Phase 2| | | | | |
-| impostare la request a yahoo finance|Done|S|R|S|S|
-| Impostare dizionario dal csv ricevuto|Done|S|S|R|S|
-| Convertire dizionario in .yaml|Doing|R|S|S|S|
-| Convertire dizionario in .json|Done|S|S|S|R|
+| Code yahoo finance's request|Done|S|R|S|S|
+| Convert .csv file given to dict|Done|S|S|R|S|
+| Convert dict to .yaml|Doing|R|S|S|S|
+| Convert dict to .json|Done|S|S|S|R|
+| Phase 3| | | | | |
+| Use PEP8 to guidline the code |Done|S|S|S|R|
+| Write .md file|Done|S|R|S|S|
 
 
 |D| Driver =  Assists those who are responsible for a task. \
