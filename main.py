@@ -106,10 +106,12 @@ def main():
 
     def mode_1():
         global stock, start, end, interval
-        
+
         stock = input("Stock name: ")
-        start = datetime(*map(int, input("Start date [yyyy-mm-dd]: ").strip().split("-")))
-        end = datetime(*map(int, input("End date [yyyy-mm-dd]: ").strip().split("-")))
+        start = datetime(
+            *map(int, input("Start date [yyyy-mm-dd]: ").strip().split("-")))
+        end = datetime(
+            *map(int, input("End date [yyyy-mm-dd]: ").strip().split("-")))
         interval = input("Interval [1mo, 1wk, 1d]: ")
 
     # User choice
@@ -121,7 +123,7 @@ def main():
         mode_0()
     else:
         mode_1()
-        
+
     # Run ETL (download + conversion)
     success = on_success
     error = on_error
