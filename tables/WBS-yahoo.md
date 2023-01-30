@@ -3,7 +3,7 @@
 |Level|WBS|Task Description|Assigned To|Start|End|Notes|
 |-----|---|----------------|-----------|-----|---|-----|
 | 1   | 1 | Phase 1| | | |
-| 2   | 1 | Creare cartella e installarci pipenv| Serratore|24/01/2023|24/01/2023| |
+| 2   | 1 | Create cartella e installarci pipenv| Serratore|24/01/2023|24/01/2023| |
 | 3   | 1 | Impostare [main.py](http://main.py/) con le librerie|Garonzi|24/01/2023|24/01/2023| |
 | 1   | 2 | Phase 2| | | | |
 | 2   | 1 | Impostare la request a yahoo finance|Garonzi|24/01/2023|24/01/2023|Usare libreria requests|
