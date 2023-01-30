@@ -3,7 +3,7 @@
 ![Language](https://img.shields.io/badge/Language-Python-blue?style=flat)
 ![Build Status](https://img.shields.io/badge/Status-Develop-lightgreen?style=flat)
 ![Version](https://img.shields.io/badge/Version-v1.0-red?style=flat)
-[![License](https://img.shields.io/badge/License-GPL-lightblue.svg?style=flat)](https://www.gnu.org/licenses/gpl-3.0)
+![License](https://img.shields.io/badge/License-MIT-lightblue.svg?style=flat)
 
 Python app to operate on monthly stock prices. Downloads data from [yahoo finance](https://finance.yahoo.com/) and converts it into csv, json and yaml. Stock and period of prices are selectable, as for interval.
 
