@@ -11,11 +11,3 @@ def dict_to_json(data, filepath):
     """
     with open(filepath, 'w', newline="\n") as json_outputFile:
             json_outputFile.write(json.dumps(data, indent=4))
-
-def main():
-    dict_to_json()
-
-
-
-if __name__ == "__main__":
-    main()
