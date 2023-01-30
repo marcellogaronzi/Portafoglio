@@ -4,7 +4,7 @@
 |-----|---|----------------|-----------|-----|---|-----|
 | 1   | 1 | Phase 1| | | |
 | 2   | 1 | Create WBS-OBI-RACI | Serratore|24/01/2023|24/01/2023| |
-| 3   | 1 | Create workspace and configure pipenv| Serratore|24/01/2023|24/01/2023| |
+| 3   | 1 | Create workspace and configure pipenv| Mazzurana|24/01/2023|24/01/2023| |
 | 4   | 1 | Set up main.py|Garonzi|24/01/2023|24/01/2023| |
 | 1   | 2 | Phase 2| | | | |
 | 2   | 2 | Code yahoo finance's request|Garonzi|24/01/2023|24/01/2023|Use requests library|
