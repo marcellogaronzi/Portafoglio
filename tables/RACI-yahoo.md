@@ -11,8 +11,11 @@
 | Convert .csv file given to dict|Done|S|S|R|S|
 | Convert dict to .yaml|Doing|R|S|S|S|
 | Convert dict to .json|Done|S|S|S|R|
+| Set up core.py|Done|S|R|S|S|
 | Phase 3| | | | | |
-| Use PEP8 to guidline the code |Done|S|S|S|R|
+| Calculate code metrics |Done|S|R|S|S|
+| Visualize program execution time |Done|S|S|R|S|
+| Use PEP8 to guidline the code |Done|R|S|S|S|
 | Write .md file|Done|S|R|S|S|
 
 

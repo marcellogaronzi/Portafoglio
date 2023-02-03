@@ -1,133 +1,97 @@
-import os
-from datetime import datetime
+#!python3
 
-# functions imports
-from scripts.get_stock import get_stock
-from scripts.csv_to_dict import csv_to_dict
-from scripts.dict_to_json import dict_to_json
-from scripts.dict_to_yaml import dict_to_yaml
+import scripts.core as core
+import time     # to show time execution
+
 
 __author__ = ["Bonomo Giovanni", "Garonzi Marcello",
               "Mazzurana Riccardo", "Serratore Federico"]
 __copyright__ = "Copyright 2023"
-__version__ = "1.0.0"
+__version__ = "2.0.0"
 __maintainer__ = ["Bonomo Giovanni", "Garonzi Marcello",
                   "Mazzurana Riccardo", "Serratore Federico"]
 __email__ = ["19036@studenti.marconiverona.edu.it",
              "19067@studenti.marconiverona.edu.it", "19118@studenti.marconiverona.edu.it", "19169@studenti.marconiverona.edu.it"]
 
 
-def check_out_dir():
-    """
-    check /out/ directory existance
-    """
-
-    dir_path = os.path.join(os.path.dirname(__file__), "out")
-    print(f"   ---Dir_path: {dir_path}")
-    if (not os.path.exists(dir_path)):
-        print("   ---Create /out/ directory")
-        os.mkdir(dir_path)
-    else:
-        print(f"   ---Directory /out/ already exists")
+def function3():
+    core.select_modality(True, False, True)
 
 
-def on_success(stock_data):
-    """
-    Handles download success
-
-        Parameters:
-            stock_data (str): csv data
-    """
-    print("---Data downloaded\n")
-
-    # Write csv file
-    with open("out/result.csv", "w") as csv:
-        csv.write(stock_data)
-
-    # .csv to dict converter
-    print("---Convert .csv file to dict")
-    data = csv_to_dict("out/result.csv")
-    print("---Dict obtained succesfully\n")
-
-    # dict to .json converter
-    print("---Convert dict to .json")
-    dict_to_json(data, "out/result.json")
-    print("---.json file created succesfully\n")
-
-    # dict to .yaml converter
-    print("---Convert dict to .yaml")
-    dict_to_yaml(data, "out/result.yaml")
-    print("---.yaml file created succesfully\n")
-
-    print("---Conversions completed")
+def function4():
+    core.select_modality(True, True, False)
 
 
-def on_error(error):
-    """
-    Handles download error
-    """
-    print("---Unable to download data. HTTP returned", error)
+def function5():
+    core.select_modality(False, False, True)
 
 
-def etl(stock, start, end, interval, success, error):
-    """
-    Downloads stock data and generates 3 files: csv, json and yaml
+def function6():
+    core.select_modality(False, True, False)
 
-        Parameters:
-            stock (str): Stock name
-            start (datetime): Start date of period
-            stop (datetime): End date of period (default is today)
-            interval (str): Type of interval (1mo, 1wk, 1d)
-            success (lambda): Success callback
-            error (lambda): Error callback
-    """
-    # out dir check
-    print("---Check output directory")
-    check_out_dir()
-    print("---Check completed\n")
 
-    # yahoo API call
-    print("---Download data from yahoo finance API")
-    get_stock(stock, start, end, interval, success, error)
+def inizializzazioneDiz():
+    dict = {
+        "1": {
+            "default mode": core.default_mode,
+        },
+        "2": {
+            "manual mode": core.manual_mode,
+        },
+        "3": {
+            "default mode to yaml only": function3,
+        },
+        "4": {
+            "default mode to json only": function4,
+        },
+        "5": {
+            "manual mode to yaml only": function5,
+        },
+        "6": {
+            "manual mode to json only": function6,
+        },
+        "7": {
+            "Clear output directory": core.clear_output_directory
+        }
+    }
+    return dict
+
+
+def callback(dict):
+    listaKey = dict.keys()
+    scelta = 'Null'
+    while scelta not in listaKey:
+
+        print("--- Dominio scelte ---")
+
+        for key in listaKey:
+            print(f'{key}: {list(dict[key])[0]}')
+
+        scelta = input("Choice: ").strip()
+    print(f'key: {scelta}-> value: {list(dict[scelta])[0]}\n')
+
+    return dict[scelta][list(dict[scelta])[0]]
 
 
 def main():
-    def mode_0():
-        global stock, start, end, interval
-
-        print("-------------------------------------------")
-        print("---Pirelli & C. S.p.A MOTHLY STOCK PRICES")
-        print("-------------------------------------------\n")
-
-        stock = "PIRC.MI"
-        start = datetime(2022, 1, 23, 7, 36, 43)
-        end = datetime(2023, 1, 23, 7, 36, 43)
-        interval = "1mo"
-
-    def mode_1():
-        global stock, start, end, interval
-
-        stock = input("Stock name: ")
-        start = datetime(
-            *map(int, input("Start date [yyyy-mm-dd]: ").strip().split("-")))
-        end = datetime(
-            *map(int, input("End date [yyyy-mm-dd]: ").strip().split("-")))
-        interval = input("Interval [1mo, 1wk, 1d]: ")
-
-    # User choice
-    default = input("Run in default mode [y/n]? ").lower() != "n"
-    print()
-
-    # Set request params
-    if default:
-        mode_0()
-    else:
-        mode_1()
-
-    # Run ETL (download + conversion)
-    success = on_success
-    error = on_error
-    etl(stock, start, end, interval, success, error)
+    app = inizializzazioneDiz()
+    function = callback(app)
+    
+    continue_choice = True
+    while continue_choice:
+        start_clock_time = time.process_time()
+        start_time = time.time()
+        
+        function()
+        
+        print(f"---Total Time Execution: {round(time.time()-start_time, 3)} s")
+        print(f"---Total CPU Time: {time.process_time()-start_clock_time} s")
+        
+        choice = input("\n\nChoose another option [y/n]? ").strip().lower() == 'y'
+        if (not choice):
+            return
+        
+        function = callback(app)
 
 
 if __name__ == "__main__":

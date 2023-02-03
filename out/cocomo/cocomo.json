@@ -1,0 +1,313 @@
+[
+    {
+        "filename": "C:\\Users\\Federico\\Desktop\\G.Marconi\\5anno\\GPI\\Portafoglio-main\\scripts\\code_metrics.py",
+        "nloc": 9,
+        "function_list": [
+            {
+                "cyclomatic_complexity": 2,
+                "nloc": 8,
+                "token_count": 57,
+                "name": "calculate_code_metrics",
+                "long_name": "calculate_code_metrics( filePath )",
+                "start_line": 4,
+                "end_line": 15,
+                "full_parameters": [
+                    "filePath"
+                ],
+                "filename": "C:\\Users\\Federico\\Desktop\\G.Marconi\\5anno\\GPI\\Portafoglio-main\\scripts\\code_metrics.py",
+                "top_nesting_level": 0,
+                "fan_in": 0,
+                "fan_out": 0,
+                "general_fan_out": 0
+            }
+        ],
+        "token_count": 60
+    },
+    {
+        "filename": "C:\\Users\\Federico\\Desktop\\G.Marconi\\5anno\\GPI\\Portafoglio-main\\scripts\\core.py",
+        "nloc": 128,
+        "function_list": [
+            {
+                "cyclomatic_complexity": 5,
+                "nloc": 23,
+                "token_count": 147,
+                "name": "check_out_dir",
+                "long_name": "check_out_dir( )",
+                "start_line": 21,
+                "end_line": 51,
+                "full_parameters": [],
+                "filename": "C:\\Users\\Federico\\Desktop\\G.Marconi\\5anno\\GPI\\Portafoglio-main\\scripts\\core.py",
+                "top_nesting_level": 0,
+                "fan_in": 0,
+                "fan_out": 0,
+                "general_fan_out": 0
+            },
+            {
+                "cyclomatic_complexity": 2,
+                "nloc": 9,
+                "token_count": 63,
+                "name": "elaborate_cocomo_file",
+                "long_name": "elaborate_cocomo_file( )",
+                "start_line": 54,
+                "end_line": 64,
+                "full_parameters": [],
+                "filename": "C:\\Users\\Federico\\Desktop\\G.Marconi\\5anno\\GPI\\Portafoglio-main\\scripts\\core.py",
+                "top_nesting_level": 0,
+                "fan_in": 0,
+                "fan_out": 0,
+                "general_fan_out": 0
+            },
+            {
+                "cyclomatic_complexity": 6,
+                "nloc": 25,
+                "token_count": 145,
+                "name": "on_success",
+                "long_name": "on_success( stock_data )",
+                "start_line": 67,
+                "end_line": 112,
+                "full_parameters": [
+                    "stock_data"
+                ],
+                "filename": "C:\\Users\\Federico\\Desktop\\G.Marconi\\5anno\\GPI\\Portafoglio-main\\scripts\\core.py",
+                "top_nesting_level": 0,
+                "fan_in": 0,
+                "fan_out": 0,
+                "general_fan_out": 0
+            },
+            {
+                "cyclomatic_complexity": 1,
+                "nloc": 2,
+                "token_count": 12,
+                "name": "on_error",
+                "long_name": "on_error( error )",
+                "start_line": 115,
+                "end_line": 119,
+                "full_parameters": [
+                    "error"
+                ],
+                "filename": "C:\\Users\\Federico\\Desktop\\G.Marconi\\5anno\\GPI\\Portafoglio-main\\scripts\\core.py",
+                "top_nesting_level": 0,
+                "fan_in": 0,
+                "fan_out": 0,
+                "general_fan_out": 0
+            },
+            {
+                "cyclomatic_complexity": 1,
+                "nloc": 6,
+                "token_count": 45,
+                "name": "etl",
+                "long_name": "etl( stock , start , end , interval , success , error )",
+                "start_line": 122,
+                "end_line": 141,
+                "full_parameters": [
+                    "stock",
+                    " start",
+                    " end",
+                    " interval",
+                    " success",
+                    " error"
+                ],
+                "filename": "C:\\Users\\Federico\\Desktop\\G.Marconi\\5anno\\GPI\\Portafoglio-main\\scripts\\core.py",
+                "top_nesting_level": 0,
+                "fan_in": 0,
+                "fan_out": 0,
+                "general_fan_out": 0
+            },
+            {
+                "cyclomatic_complexity": 2,
+                "nloc": 8,
+                "token_count": 32,
+                "name": "select_modality",
+                "long_name": "select_modality( is_default , convert_to_json , convert_to_yaml )",
+                "start_line": 144,
+                "end_line": 153,
+                "full_parameters": [
+                    "is_default",
+                    " convert_to_json",
+                    " convert_to_yaml"
+                ],
+                "filename": "C:\\Users\\Federico\\Desktop\\G.Marconi\\5anno\\GPI\\Portafoglio-main\\scripts\\core.py",
+                "top_nesting_level": 0,
+                "fan_in": 0,
+                "fan_out": 0,
+                "general_fan_out": 0
+            },
+            {
+                "cyclomatic_complexity": 6,
+                "nloc": 11,
+                "token_count": 91,
+                "name": "clear_output_directory",
+                "long_name": "clear_output_directory( )",
+                "start_line": 156,
+                "end_line": 171,
+                "full_parameters": [],
+                "filename": "C:\\Users\\Federico\\Desktop\\G.Marconi\\5anno\\GPI\\Portafoglio-main\\scripts\\core.py",
+                "top_nesting_level": 0,
+                "fan_in": 0,
+                "fan_out": 0,
+                "general_fan_out": 0
+            },
+            {
+                "cyclomatic_complexity": 1,
+                "nloc": 4,
+                "token_count": 24,
+                "name": "call_etl",
+                "long_name": "call_etl( )",
+                "start_line": 174,
+                "end_line": 177,
+                "full_parameters": [],
+                "filename": "C:\\Users\\Federico\\Desktop\\G.Marconi\\5anno\\GPI\\Portafoglio-main\\scripts\\core.py",
+                "top_nesting_level": 0,
+                "fan_in": 0,
+                "fan_out": 0,
+                "general_fan_out": 0
+            },
+            {
+                "cyclomatic_complexity": 1,
+                "nloc": 10,
+                "token_count": 65,
+                "name": "default_mode",
+                "long_name": "default_mode( )",
+                "start_line": 180,
+                "end_line": 194,
+                "full_parameters": [],
+                "filename": "C:\\Users\\Federico\\Desktop\\G.Marconi\\5anno\\GPI\\Portafoglio-main\\scripts\\core.py",
+                "top_nesting_level": 0,
+                "fan_in": 0,
+                "fan_out": 0,
+                "general_fan_out": 0
+            },
+            {
+                "cyclomatic_complexity": 1,
+                "nloc": 9,
+                "token_count": 75,
+                "name": "manual_mode",
+                "long_name": "manual_mode( )",
+                "start_line": 197,
+                "end_line": 208,
+                "full_parameters": [],
+                "filename": "C:\\Users\\Federico\\Desktop\\G.Marconi\\5anno\\GPI\\Portafoglio-main\\scripts\\core.py",
+                "top_nesting_level": 0,
+                "fan_in": 0,
+                "fan_out": 0,
+                "general_fan_out": 0
+            },
+            {
+                "cyclomatic_complexity": 2,
+                "nloc": 7,
+                "token_count": 30,
+                "name": "main",
+                "long_name": "main( )",
+                "start_line": 211,
+                "end_line": 220,
+                "full_parameters": [],
+                "filename": "C:\\Users\\Federico\\Desktop\\G.Marconi\\5anno\\GPI\\Portafoglio-main\\scripts\\core.py",
+                "top_nesting_level": 0,
+                "fan_in": 0,
+                "fan_out": 0,
+                "general_fan_out": 0
+            }
+        ],
+        "token_count": 798
+    },
+    {
+        "filename": "C:\\Users\\Federico\\Desktop\\G.Marconi\\5anno\\GPI\\Portafoglio-main\\scripts\\csv_to_dict.py",
+        "nloc": 8,
+        "function_list": [
+            {
+                "cyclomatic_complexity": 2,
+                "nloc": 7,
+                "token_count": 46,
+                "name": "csv_to_dict",
+                "long_name": "csv_to_dict( filepath )",
+                "start_line": 6,
+                "end_line": 19,
+                "full_parameters": [
+                    "filepath"
+                ],
+                "filename": "C:\\Users\\Federico\\Desktop\\G.Marconi\\5anno\\GPI\\Portafoglio-main\\scripts\\csv_to_dict.py",
+                "top_nesting_level": 0,
+                "fan_in": 0,
+                "fan_out": 0,
+                "general_fan_out": 0
+            }
+        ],
+        "token_count": 49
+    },
+    {
+        "filename": "C:\\Users\\Federico\\Desktop\\G.Marconi\\5anno\\GPI\\Portafoglio-main\\scripts\\dict_to_json.py",
+        "nloc": 4,
+        "function_list": [
+            {
+                "cyclomatic_complexity": 1,
+                "nloc": 3,
+                "token_count": 37,
+                "name": "dict_to_json",
+                "long_name": "dict_to_json( data , filepath )",
+                "start_line": 6,
+                "end_line": 15,
+                "full_parameters": [
+                    "data",
+                    " filepath"
+                ],
+                "filename": "C:\\Users\\Federico\\Desktop\\G.Marconi\\5anno\\GPI\\Portafoglio-main\\scripts\\dict_to_json.py",
+                "top_nesting_level": 0,
+                "fan_in": 0,
+                "fan_out": 0,
+                "general_fan_out": 0
+            }
+        ],
+        "token_count": 40
+    },
+    {
+        "filename": "C:\\Users\\Federico\\Desktop\\G.Marconi\\5anno\\GPI\\Portafoglio-main\\scripts\\dict_to_yaml.py",
+        "nloc": 4,
+        "function_list": [
+            {
+                "cyclomatic_complexity": 1,
+                "nloc": 3,
+                "token_count": 26,
+                "name": "dict_to_yaml",
+                "long_name": "dict_to_yaml( dictionary , filename )",
+                "start_line": 6,
+                "end_line": 15,
+                "full_parameters": [
+                    "dictionary",
+                    " filename"
+                ],
+                "filename": "C:\\Users\\Federico\\Desktop\\G.Marconi\\5anno\\GPI\\Portafoglio-main\\scripts\\dict_to_yaml.py",
+                "top_nesting_level": 0,
+                "fan_in": 0,
+                "fan_out": 0,
+                "general_fan_out": 0
+            }
+        ],
+        "token_count": 29
+    },
+    {
+        "filename": "C:\\Users\\Federico\\Desktop\\G.Marconi\\5anno\\GPI\\Portafoglio-main\\scripts\\get_stock.py",
+        "nloc": 31,
+        "function_list": [
+            {
+                "cyclomatic_complexity": 4,
+                "nloc": 28,
+                "token_count": 118,
+                "name": "get_stock",
+                "long_name": "get_stock( stock , start , end = datetime . now ( )",
+                "start_line": 9,
+                "end_line": 42,
+                "full_parameters": [
+                    "stock",
+                    " start",
+                    " end = datetime . now ("
+                ],
+                "filename": "C:\\Users\\Federico\\Desktop\\G.Marconi\\5anno\\GPI\\Portafoglio-main\\scripts\\get_stock.py",
+                "top_nesting_level": 0,
+                "fan_in": 0,
+                "fan_out": 0,
+                "general_fan_out": 0
+            }
+        ],
+        "token_count": 135
+    }
+]
