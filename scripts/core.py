@@ -17,9 +17,12 @@ CONVERT_TO_YAML = True
 CONVERT_TO_JSON = True
 
 
-def check_out_dir():
+def check_out_dir(stock):
     """
     check ../out/ directory existence
+
+        Parameters:
+            stock (str): stock name
     """
     dir_path = os.path.dirname(__file__)
     dir_path = Path(dir_path).parent
@@ -50,7 +53,30 @@ def check_out_dir():
                 print(f"   ---Directory {folder} already exists")
 
 
+def clear_output_directory():
+    """
+    Clears output directory
+    """
+    # confirm request
+    confirm = input("Delete all the files generated [y/n]? ").strip().lower() == "y"
+
+    if confirm:
+        folder = 'out/'
+        for filename in os.listdir(folder):
+            file_path = os.path.join(folder, filename)
+
+            if os.path.isfile(file_path) or os.path.islink(file_path):
+                # delete file or link
+                os.unlink(file_path)
+            elif os.path.isdir(file_path):
+                # delete folder and all its content
+                shutil.rmtree(file_path)
+
+
 def elaborate_cocomo_file():
+    """
+    Calculates and writes code metrics on output file
+    """
     print("---Calculate cocomo")
     cocomo_dict = []
     for _file in glob.glob(os.path.dirname(__file__) + "/*.py", recursive=True):
@@ -63,12 +89,14 @@ def elaborate_cocomo_file():
     print("---out/cocomo/cocomo.json successfully created\n ")
 
 
-def on_success(stock_data):
+def on_success(stock_data, stock, interval):
     """
     Handles download success
 
         Parameters:
             stock_data (str): csv data
+            stock (str): stock name
+            interval (str): stock data time interval
     """
     print("---Data downloaded\n")
 
@@ -114,11 +142,14 @@ def on_success(stock_data):
 def on_error(error):
     """
     Handles download error
+
+        Parameters:
+            error (int): HTTP error code
     """
     print("---Unable to download data. HTTP returned", error)
 
 
-def etl(stock, start, end, interval, success, error):
+def call_etl(stock, start, end, interval):
     """
     Downloads stock data and generates 3 files: csv, json and yaml
 
@@ -127,12 +158,16 @@ def etl(stock, start, end, interval, success, error):
             start (datetime): Start date of period
             end (datetime): End date of period (default is today)
             interval (str): Type of interval (1mo, 1wk, 1d)
-            success (lambda): Success callback
-            error (lambda): Error callback
     """
+
+    # callbacks
+    def success(data): on_success(data, stock, interval)
+
+    def error(e): on_error(e)
+
     # out dir check
     print("---Check output directory")
-    check_out_dir()
+    check_out_dir(stock)
     print("---Check completed\n")
 
     # yahoo API call
@@ -140,7 +175,47 @@ def etl(stock, start, end, interval, success, error):
     get_stock(stock, start, end, interval, success, error)
 
 
+def default_mode():
+    """
+    Portafoglio core default mode
+    """
+    print("-------------------------------------------")
+    print("---Pirelli & C. S.p.A MOTHLY STOCK PRICES")
+    print("-------------------------------------------\n")
+
+    stock = "PIRC.MI"
+    start = datetime(2022, 1, 23, 7, 36, 43)
+    end = datetime(2023, 1, 23, 7, 36, 43)
+    interval = "1d"
+
+    # Run ETL (download + conversion)
+    call_etl(stock, start, end, interval)
+
+
+def manual_mode():
+    """
+    Portafoglio core user-input mode
+    """
+    stock = input("Stock name: ")
+    start = datetime(
+        *map(int, input("Start date [yyyy-mm-dd]: ").strip().split("-")))
+    end = datetime(
+        *map(int, input("End date [yyyy-mm-dd]: ").strip().split("-")))
+    interval = input("Interval [1mo, 1wk, 1d]: ")
+
+    # Run ETL (download + conversion)
+    call_etl(stock, start, end, interval)
+
+
 def select_modality(is_default, convert_to_json, convert_to_yaml):
+    """
+    Core mode launcher
+
+        Parameters:
+            is_default (bool): run in default mode
+            convert_to_json (bool): convert to json
+            convert_to_yaml (bool): convert to yaml
+    """
     global CONVERT_TO_JSON, CONVERT_TO_YAML
 
     CONVERT_TO_JSON = convert_to_json
@@ -152,61 +227,10 @@ def select_modality(is_default, convert_to_json, convert_to_yaml):
         manual_mode()
 
 
-def clear_output_directory():
-    # confirm request
-    confirm = input(
-        "Delete all the files generated [y/n]? ").strip().lower() == "y"
-
-    if confirm:
-        folder = 'out/'
-        for filename in os.listdir(folder):
-            file_path = os.path.join(folder, filename)
-
-            if os.path.isfile(file_path) or os.path.islink(file_path):
-                # delete file or link
-                os.unlink(file_path)
-            elif os.path.isdir(file_path):
-                # delete folder and all its content
-                shutil.rmtree(file_path)
-
-
-def call_etl():
-    success = on_success
-    error = on_error
-    etl(stock, start, end, interval, success, error)
-
-
-def default_mode():
-    global stock, start, end, interval
-
-    print("-------------------------------------------")
-    print("---Pirelli & C. S.p.A MOTHLY STOCK PRICES")
-    print("-------------------------------------------\n")
-
-    stock = "PIRC.MI"
-    start = datetime(2022, 1, 23, 7, 36, 43)
-    end = datetime(2023, 1, 23, 7, 36, 43)
-    interval = "1d"
-
-    # Run ETL (download + conversion)
-    call_etl()
-
-
-def manual_mode():
-    global stock, start, end, interval
-
-    stock = input("Stock name: ")
-    start = datetime(
-        *map(int, input("Start date [yyyy-mm-dd]: ").strip().split("-")))
-    end = datetime(
-        *map(int, input("End date [yyyy-mm-dd]: ").strip().split("-")))
-    interval = input("Interval [1mo, 1wk, 1d]: ")
-
-    # Run ETL (download + conversion)
-    call_etl()
-
-
 def main():
+    """
+    Main
+    """
     # User choice
     default = input("Run in default mode [y/n]? ").lower() != "n"
     print()
