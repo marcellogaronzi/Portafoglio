@@ -1,18 +1,17 @@
 #!python3
 
+import glob  # to do recursively operations inside the project
 import os
-import shutil   # to delete folder and its content
-import glob     # to do recursively operations inside the project
+import shutil  # to delete folder and its content
 from datetime import datetime
 from pathlib import Path
 
-# functions imports
-from scripts.get_stock import get_stock
+from scripts.code_metrics import calculate_code_metrics
 from scripts.csv_to_dict import csv_to_dict
 from scripts.dict_to_json import dict_to_json
 from scripts.dict_to_yaml import dict_to_yaml
-from scripts.code_metrics import calculate_code_metrics
-
+# functions imports
+from scripts.get_stock import get_stock
 
 CONVERT_TO_YAML = True
 CONVERT_TO_JSON = True
@@ -20,7 +19,7 @@ CONVERT_TO_JSON = True
 
 def check_out_dir():
     """
-    check ../out/ directory existance
+    check ../out/ directory existence
     """
     dir_path = os.path.dirname(__file__)
     dir_path = Path(dir_path).parent
@@ -34,7 +33,7 @@ def check_out_dir():
     ]
 
     print(f"   ---Dir_path: {dir_path}")
-    if (not os.path.exists(dir_path)):
+    if not os.path.exists(dir_path):
         print("   ---Create /out/ directory")
         os.mkdir(dir_path)
         for folder in out_folders:
@@ -44,7 +43,7 @@ def check_out_dir():
         print(f"   ---Directory /out/ already exists")
 
         for folder in out_folders:
-            if (not os.path.exists(folder)):
+            if not os.path.exists(folder):
                 print(f"   ---Create {folder} directory")
                 os.mkdir(folder)
             else:
@@ -54,14 +53,14 @@ def check_out_dir():
 def elaborate_cocomo_file():
     print("---Calculate cocomo")
     cocomo_dict = []
-    for _file in glob.glob(os.path.dirname(__file__)+"/*.py", recursive=True):
+    for _file in glob.glob(os.path.dirname(__file__) + "/*.py", recursive=True):
         cocomo_dict.append(calculate_code_metrics(_file))
 
-    print("---Cocomo calculated succesfully")
+    print("---Cocomo calculated successfully")
 
     print("---Write cocomo's results on .json file")
     dict_to_json(cocomo_dict, f"out/cocomo/cocomo.json")
-    print("---out/cocomo/cocomo.json succesfully created\n ")
+    print("---out/cocomo/cocomo.json successfully created\n ")
 
 
 def on_success(stock_data):
@@ -72,39 +71,39 @@ def on_success(stock_data):
             stock_data (str): csv data
     """
     print("---Data downloaded\n")
-    
+
     # get only the 16ths tuple for each month if interval = 1d
-    if (interval == "1d"):
+    if interval == "1d":
         split_stock = stock_data.split("\n")
         new_stock = split_stock[0] + "\n"
-        
+
         for row in split_stock:
-            if (row.split(",")[0].endswith("-16")):
+            if row.split(",")[0].endswith("-16"):
                 new_stock += row + "\n"
-        
+
         stock_data = new_stock
 
     # Write csv file
-    csvFile = f"out/{stock}/{stock}.csv"
-    with open(csvFile, "w") as csv:
+    csv_file = f"out/{stock}/{stock}.csv"
+    with open(csv_file, "w") as csv:
         csv.write(stock_data)
 
     # .csv to dict converter
     print("---Convert .csv file to dict")
-    data = csv_to_dict(csvFile)
-    print("---Dict obtained succesfully\n")
+    data = csv_to_dict(csv_file)
+    print("---Dict obtained successfully\n")
 
     # dict to .json converter
-    if (CONVERT_TO_JSON):
+    if CONVERT_TO_JSON:
         print("---Convert dict to .json")
         dict_to_json(data, f"out/{stock}/{stock}.json")
-        print("---.json file created succesfully\n")
+        print("---.json file created successfully\n")
 
     # dict to .yaml converter
-    if (CONVERT_TO_YAML):
+    if CONVERT_TO_YAML:
         print("---Convert dict to .yaml")
         dict_to_yaml(data, f"out/{stock}/{stock}.yaml")
-        print("---.yaml file created succesfully\n")
+        print("---.yaml file created successfully\n")
 
     print("---Conversions completed\n")
 
@@ -126,7 +125,7 @@ def etl(stock, start, end, interval, success, error):
         Parameters:
             stock (str): Stock name
             start (datetime): Start date of period
-            stop (datetime): End date of period (default is today)
+            end (datetime): End date of period (default is today)
             interval (str): Type of interval (1mo, 1wk, 1d)
             success (lambda): Success callback
             error (lambda): Error callback
@@ -147,7 +146,7 @@ def select_modality(is_default, convert_to_json, convert_to_yaml):
     CONVERT_TO_JSON = convert_to_json
     CONVERT_TO_YAML = convert_to_yaml
 
-    if (is_default):
+    if is_default:
         default_mode()
     else:
         manual_mode()
@@ -158,7 +157,7 @@ def clear_output_directory():
     confirm = input(
         "Delete all the files generated [y/n]? ").strip().lower() == "y"
 
-    if (confirm):
+    if confirm:
         folder = 'out/'
         for filename in os.listdir(folder):
             file_path = os.path.join(folder, filename)
@@ -178,7 +177,6 @@ def call_etl():
 
 
 def default_mode():
-
     global stock, start, end, interval
 
     print("-------------------------------------------")

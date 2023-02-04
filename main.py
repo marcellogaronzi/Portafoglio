@@ -1,17 +1,17 @@
 #!python3
 
+import time  # to show time execution
+
 import scripts.core as core
-import time     # to show time execution
 
-
-__author__ = ["Bonomo Giovanni", "Garonzi Marcello",
-              "Mazzurana Riccardo", "Serratore Federico"]
+__author__ = ["Bonomo Giovanni", "Garonzi Marcello", "Mazzurana Riccardo", "Serratore Federico"]
 __copyright__ = "Copyright 2023"
 __version__ = "2.0.0"
-__maintainer__ = ["Bonomo Giovanni", "Garonzi Marcello",
-                  "Mazzurana Riccardo", "Serratore Federico"]
+__maintainer__ = ["Bonomo Giovanni", "Garonzi Marcello", "Mazzurana Riccardo", "Serratore Federico"]
 __email__ = ["19036@studenti.marconiverona.edu.it",
-             "19067@studenti.marconiverona.edu.it", "19118@studenti.marconiverona.edu.it", "19169@studenti.marconiverona.edu.it"]
+             "19067@studenti.marconiverona.edu.it",
+             "19118@studenti.marconiverona.edu.it",
+             "19169@studenti.marconiverona.edu.it"]
 
 
 def function3():
@@ -76,21 +76,21 @@ def callback(dict):
 def main():
     app = inizializzazioneDiz()
     function = callback(app)
-    
+
     continue_choice = True
     while continue_choice:
         start_clock_time = time.process_time()
         start_time = time.time()
-        
+
         function()
-        
-        print(f"---Total Time Execution: {round(time.time()-start_time, 3)} s")
-        print(f"---Total CPU Time: {time.process_time()-start_clock_time} s")
-        
+
+        print(f"---Total Time Execution: {round(time.time() - start_time, 3)} s")
+        print(f"---Total CPU Time: {time.process_time() - start_clock_time} s")
+
         choice = input("\n\nChoose another option [y/n]? ").strip().lower() == 'y'
         if (not choice):
             return
-        
+
         function = callback(app)
 
 

@@ -14,6 +14,6 @@ def csv_to_dict(filepath):
     with open(filepath) as csv_file:
         csv_reader = csv.DictReader(csv_file)
         for i, row in enumerate(csv_reader):
-            data[i+1] = row
+            data[i + 1] = row
 
     return data
