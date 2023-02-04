@@ -78,9 +78,9 @@ def elaborate_cocomo_file():
     Calculates and writes code metrics on output file
     """
     print("---Calculate cocomo")
-    cocomo_dict = []
-    for _file in glob.glob(os.path.dirname(__file__) + "/*.py", recursive=True):
-        cocomo_dict.append(calculate_code_metrics(_file))
+    cocomo_dict = {}
+    for i, filename in enumerate(glob.glob(os.path.dirname(__file__) + "/*.py", recursive=True)):
+        cocomo_dict[i] = calculate_code_metrics(filename)
 
     print("---Cocomo calculated successfully")
 

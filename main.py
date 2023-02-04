@@ -15,23 +15,28 @@ __email__ = ["19036@studenti.marconiverona.edu.it",
 
 
 def function3():
+    """Default mode to yaml only"""
     core.select_modality(True, False, True)
 
 
 def function4():
+    """Default mode to json only"""
     core.select_modality(True, True, False)
 
 
 def function5():
+    """Manual mode to yaml only"""
     core.select_modality(False, False, True)
 
 
 def function6():
+    """Manual mode to json only"""
     core.select_modality(False, True, False)
 
 
-def inizializzazioneDiz():
-    dict = {
+def inizializzazione_diz():
+    """Initializes run options dictionary"""
+    dictionary = {
         "1": {
             "default mode": core.default_mode,
         },
@@ -54,27 +59,34 @@ def inizializzazioneDiz():
             "Clear output directory": core.clear_output_directory
         }
     }
-    return dict
+    return dictionary
 
 
-def callback(dict):
-    listaKey = dict.keys()
+def callback(dictionary):
+    """
+    Launches code modes based on user choice
+
+        Parameters:
+            dictionary (dict): options dictionary
+    """
+    lista_key = dictionary.keys()
     scelta = 'Null'
-    while scelta not in listaKey:
+    while scelta not in lista_key:
 
-        print("--- Dominio scelte ---")
+        print("--- Domain choices ---")
 
-        for key in listaKey:
-            print(f'{key}: {list(dict[key])[0]}')
+        for key in lista_key:
+            print(f'{key}: {list(dictionary[key])[0]}')
 
         scelta = input("Choice: ").strip()
-    print(f'key: {scelta}-> value: {list(dict[scelta])[0]}\n')
+    print(f'key: {scelta}-> value: {list(dictionary[scelta])[0]}\n')
 
-    return dict[scelta][list(dict[scelta])[0]]
+    return dictionary[scelta][list(dictionary[scelta])[0]]
 
 
 def main():
-    app = inizializzazioneDiz()
+    """Main"""
+    app = inizializzazione_diz()
     function = callback(app)
 
     continue_choice = True
@@ -88,7 +100,7 @@ def main():
         print(f"---Total CPU Time: {time.process_time() - start_clock_time} s")
 
         choice = input("\n\nChoose another option [y/n]? ").strip().lower() == 'y'
-        if (not choice):
+        if not choice:
             return
 
         function = callback(app)

@@ -1,5 +1,5 @@
-[
-    {
+{
+    "0": {
         "filename": "C:\\Users\\user_\\Desktop\\2023-01-23_Portafoglio\\scripts\\code_metrics.py",
         "nloc": 9,
         "function_list": [
@@ -23,7 +23,7 @@
         ],
         "token_count": 60
     },
-    {
+    "1": {
         "filename": "C:\\Users\\user_\\Desktop\\2023-01-23_Portafoglio\\scripts\\core.py",
         "nloc": 123,
         "function_list": [
@@ -62,7 +62,7 @@
             {
                 "cyclomatic_complexity": 2,
                 "nloc": 9,
-                "token_count": 64,
+                "token_count": 69,
                 "name": "elaborate_cocomo_file",
                 "long_name": "elaborate_cocomo_file( )",
                 "start_line": 76,
@@ -192,9 +192,9 @@
                 "general_fan_out": 0
             }
         ],
-        "token_count": 787
+        "token_count": 792
     },
-    {
+    "2": {
         "filename": "C:\\Users\\user_\\Desktop\\2023-01-23_Portafoglio\\scripts\\csv_to_dict.py",
         "nloc": 8,
         "function_list": [
@@ -218,7 +218,7 @@
         ],
         "token_count": 49
     },
-    {
+    "3": {
         "filename": "C:\\Users\\user_\\Desktop\\2023-01-23_Portafoglio\\scripts\\dict_to_json.py",
         "nloc": 4,
         "function_list": [
@@ -243,7 +243,7 @@
         ],
         "token_count": 40
     },
-    {
+    "4": {
         "filename": "C:\\Users\\user_\\Desktop\\2023-01-23_Portafoglio\\scripts\\dict_to_yaml.py",
         "nloc": 4,
         "function_list": [
@@ -268,7 +268,7 @@
         ],
         "token_count": 29
     },
-    {
+    "5": {
         "filename": "C:\\Users\\user_\\Desktop\\2023-01-23_Portafoglio\\scripts\\get_stock.py",
         "nloc": 33,
         "function_list": [
@@ -294,4 +294,4 @@
         ],
         "token_count": 135
     }
-]
+}
