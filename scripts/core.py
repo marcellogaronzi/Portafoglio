@@ -28,11 +28,9 @@ def check_out_dir(stock):
     dir_path = Path(dir_path).parent
     dir_path = os.path.join(dir_path, "out")
 
-    # dir_stock_path = os.path.join(dir_path, stock)
-    # dir_cocomo_path = os.path.join(dir_path, stock)
     out_folders = [
         os.path.join(dir_path, stock),
-        os.path.join(dir_path, "cocomo")
+        os.path.join(dir_path, "code_metrics")
     ]
 
     print(f"   ---Dir_path: {dir_path}")
@@ -73,20 +71,20 @@ def clear_output_directory():
                 shutil.rmtree(file_path)
 
 
-def elaborate_cocomo_file():
+def elaborate_code_metrics_file():
     """
     Calculates and writes code metrics on output file
     """
-    print("---Calculate cocomo")
-    cocomo_dict = {}
+    print("---Calculate code metrics")
+    code_metrics_dict = {}
     for i, filename in enumerate(glob.glob(os.path.dirname(__file__) + "/*.py", recursive=True)):
-        cocomo_dict[i] = calculate_code_metrics(filename)
+        code_metrics_dict[i] = calculate_code_metrics(filename)
 
-    print("---Cocomo calculated successfully")
+    print("---Code metrics calculated successfully")
 
-    print("---Write cocomo's results on .json file")
-    dict_to_json(cocomo_dict, f"out/cocomo/cocomo.json")
-    print("---out/cocomo/cocomo.json successfully created\n ")
+    print("---Write code metrics' results on .json file")
+    dict_to_json(code_metrics_dict , f"out/code_metrics/code_metrics.json")
+    print("---out/code_metrics/code_metrics.json successfully created\n ")
 
 
 def on_success(stock_data, stock, interval):
@@ -135,8 +133,8 @@ def on_success(stock_data, stock, interval):
 
     print("---Conversions completed\n")
 
-    # elaborate cocomo with lizard library
-    elaborate_cocomo_file()
+    # elaborate code metrics with lizard library
+    elaborate_code_metrics_file()
 
 
 def on_error(error):
