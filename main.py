@@ -4,10 +4,12 @@ import time  # to show time execution
 
 import scripts.core as core
 
-__author__ = ["Bonomo Giovanni", "Garonzi Marcello", "Mazzurana Riccardo", "Serratore Federico"]
+__author__ = ["Bonomo Giovanni", "Garonzi Marcello",
+              "Mazzurana Riccardo", "Serratore Federico"]
 __copyright__ = "Copyright 2023"
 __version__ = "2.0.0"
-__maintainer__ = ["Bonomo Giovanni", "Garonzi Marcello", "Mazzurana Riccardo", "Serratore Federico"]
+__maintainer__ = ["Bonomo Giovanni", "Garonzi Marcello",
+                  "Mazzurana Riccardo", "Serratore Federico"]
 __email__ = ["19036@studenti.marconiverona.edu.it",
              "19067@studenti.marconiverona.edu.it",
              "19118@studenti.marconiverona.edu.it",
@@ -15,21 +17,31 @@ __email__ = ["19036@studenti.marconiverona.edu.it",
 
 
 def function3():
+    """Default mode to csv only"""
+    core.select_modality(True, False, False)
+
+
+def function4():
     """Default mode to yaml only"""
     core.select_modality(True, False, True)
 
 
-def function4():
+def function5():
     """Default mode to json only"""
     core.select_modality(True, True, False)
 
 
-def function5():
+def function6():
+    """Manual mode to csv only"""
+    core.select_modality(False, False, False)
+
+
+def function7():
     """Manual mode to yaml only"""
     core.select_modality(False, False, True)
 
 
-def function6():
+def function8():
     """Manual mode to json only"""
     core.select_modality(False, True, False)
 
@@ -44,18 +56,24 @@ def inizializzazione_diz():
             "manual mode": core.manual_mode,
         },
         "3": {
-            "default mode to yaml only": function3,
+            "default mode to csv only": function3,
         },
         "4": {
-            "default mode to json only": function4,
+            "default mode to yaml only": function4,
         },
         "5": {
-            "manual mode to yaml only": function5,
+            "default mode to json only": function5,
         },
         "6": {
-            "manual mode to json only": function6,
+            "manual mode to csv only": function6,
         },
         "7": {
+            "manual mode to yaml only": function7,
+        },
+        "8": {
+            "manual mode to json only": function8,
+        },
+        "9": {
             "Clear output directory": core.clear_output_directory
         }
     }
@@ -96,10 +114,12 @@ def main():
 
         function()
 
-        print(f"---Total Time Execution: {round(time.time() - start_time, 3)} s")
+        print(
+            f"---Total Time Execution: {round(time.time() - start_time, 3)} s")
         print(f"---Total CPU Time: {time.process_time() - start_clock_time} s")
 
-        choice = input("\n\nChoose another option [y/n]? ").strip().lower() == 'y'
+        choice = input(
+            "\n\nChoose another option [y/n]? ").strip().lower() == 'y'
         if not choice:
             return
 
