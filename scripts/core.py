@@ -24,6 +24,8 @@ def check_out_dir(stock):
         Parameters:
             stock (str): stock name
     """
+    global dir_path
+
     dir_path = os.path.dirname(__file__)
     dir_path = Path(dir_path).parent
     dir_path = os.path.join(dir_path, "out")
@@ -56,7 +58,8 @@ def clear_output_directory():
     Clears output directory
     """
     # confirm request
-    confirm = input("Delete all the files generated [y/n]? ").strip().lower() == "y"
+    confirm = input(
+        "Delete all the files generated [y/n]? ").strip().lower() == "y"
 
     if confirm:
         folder = 'out/'
@@ -77,13 +80,13 @@ def elaborate_code_metrics_file():
     """
     print("---Calculate code metrics")
     code_metrics_dict = {}
+
     for i, filename in enumerate(glob.glob(os.path.dirname(__file__) + "/*.py", recursive=True)):
         code_metrics_dict[i] = calculate_code_metrics(filename)
-
     print("---Code metrics calculated successfully")
 
     print("---Write code metrics' results on .json file")
-    dict_to_json(code_metrics_dict , f"out/code_metrics/code_metrics.json")
+    dict_to_json(code_metrics_dict, f"out/code_metrics/code_metrics.json")
     print("---out/code_metrics/code_metrics.json successfully created\n ")
 
 
@@ -110,14 +113,17 @@ def on_success(stock_data, stock, interval):
         stock_data = new_stock
 
     # Write csv file
+    print("---Write .csv file")
     csv_file = f"out/{stock}/{stock}.csv"
     with open(csv_file, "w") as csv:
         csv.write(stock_data)
+    print(f"---{csv_file} succesfully created\n")
 
     # .csv to dict converter
-    print("---Convert .csv file to dict")
-    data = csv_to_dict(csv_file)
-    print("---Dict obtained successfully\n")
+    if CONVERT_TO_JSON or CONVERT_TO_YAML:
+        print("---Convert .csv file to dict")
+        data = csv_to_dict(csv_file)
+        print("---Dict obtained successfully\n")
 
     # dict to .json converter
     if CONVERT_TO_JSON:
@@ -130,8 +136,6 @@ def on_success(stock_data, stock, interval):
         print("---Convert dict to .yaml")
         dict_to_yaml(data, f"out/{stock}/{stock}.yaml")
         print("---.yaml file created successfully\n")
-
-    print("---Conversions completed\n")
 
     # elaborate code metrics with lizard library
     elaborate_code_metrics_file()
